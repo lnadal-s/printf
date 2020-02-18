@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:59:03 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 17:01:03 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:33:01 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,12 @@ int ft_printf(const char* format, ...)
 	if (!(tp = (t_print *)malloc(sizeof(t_print))))
 		return (-1);
 	if (!(init_lst(tp->lst)))
-		return (-1);
+		return (clear_sp(tp));
 	if (get_convlst(format, tp->lst) == -1)
-		return (-1);
+		return (clear_sp(tp));
 	ret = process(tp);
+	if (ret == -1)
+		return (clear_sp(tp);
 	va_end(tp->ap);
 	return (ret);
 }

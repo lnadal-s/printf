@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_test.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 18:42:15 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 17:43:52 by lnadal-s         ###   ########.fr       */
+/*   Created: 2020/02/18 17:56:04 by lnadal-s          #+#    #+#             */
+/*   Updated: 2020/02/18 18:07:09 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libftprintf.h"
 
-int main(void)
+char *alloc_char(char c, int size)
 {
-	printf("%2c\n", 'c');
-}
+	char	*dst;
+	int		k;
 
+	k = 0;
+	if (!(dst = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
+	while (k < size)
+	{
+		dst[k] = c;
+		k++;
+	}
+	dst[k] = 0;
+	return (dst);
+}
