@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 11:53:33 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:55:23 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,27 @@
 void aff_lst(t_arg **lst)
 {
 	t_arg *ptr;
+//	int k = 0; 
 
 	if (lst == NULL)
 		return ;
 	ptr = *lst;
+	printf("on va print\n");
 	while (ptr)
 	{
-		ft_putstr_fd(ptr->res, 1);
+		//printf("---ARGUEMENT %d----\n", k++);
+		if (ptr->is_convers == 0)
+		{
+			//ft_putstr_fd(ptr->res, 1);
+			printf("%s", ptr->res);
+		}
+		else
+		{
+			printf("\n");
+		//	printf("je print 2\n");
+			aff_arg(ptr);
+			
+		}
 		ptr=ptr->next;
 	}
 }
@@ -40,6 +54,7 @@ t_arg *init_arg()
 	elem->prec = 0;
 	elem->type = 0;
 	elem->res = 0;
+	elem->next = 0;
 	return (elem);
 }
 

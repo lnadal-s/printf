@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:59:03 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 12:03:38 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:59:35 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int is_flag(char c)
 	return (0);
 }
 
-t_arg *check_conv(char *str)
+int check_conv(const char *str, t_arg **lst)
 {
 	int k;
 	t_arg *new;
@@ -43,48 +43,26 @@ t_arg *check_conv(char *str)
 	k = 0;
 	new = init_arg();
 	k += check_alig(str, new);
-	k += check_zero(str, new);
-	if (str[k] == '*')
+	k += check_zero(str + k, new);
+	k += check_width(str + k, new);
+	k += check_prec(str + k, new);
+	if (check_flag(str[k], new))
 	{
-		new->width = -1;
-		k++;
+		add_c(lst, new);
+		return (k + 1);
 	}
 	else
-	{
-		new->width = ft_atoi(str + k); //attention a cet atoi il ne doit pas y avoir d' espace ni ce + ni de -
-	while (str[k] && ft_isdigit(str[k]))
-		k++;
-	}
-	if (str[k] && str[k] == '.' && str[k + 1])
-	{
-		k++;
-		if (str[k] == '*')
-		{
-			new->prec = -1;
-			k++;
-		}
-		else
-			new->prec = ft_atoi(str + k); //attention a cet atoi il ne doit pas y avoir d' espace ni ce + ni de -
-	}
-	while (str[k] && ft_isdigit(str[k]))
-		k++;
-	if (is_flag(str[k]))
-	{
-		new->type = str[k];
-		new->is_convers = 1;
-	}
-	aff_arg(new);
-	return (new);
+		return (-1);
 }
 
-int parsing(const char *s, t_arg **lst)
+int process_S(const char *s, t_arg **lst)
 {
 	int k;
 
 	k = 0;
 	while (s[k])
 	{
-		if (!is_conv(s[k], '%'))
+		if (s[k] != '%')
 			add_c(lst, arg_newc(s[k]));
 		else if (is_conv(s[k], '%')  && s[k + 1] && is_conv(s[k + 1], '%'))
 		{
@@ -98,20 +76,34 @@ int parsing(const char *s, t_arg **lst)
 	return (k);
 }
 
-int ft_printf(const char *format, ...)
-{	
-	va_list 	ap;
-	size_t		ret;
-	t_arg		**lst;
+int get_val(const char* format)
+{
+	t_arg **lst;
+	int ret;
 
-	va_start(ap, format);
-	ret = 0;
 	if (!(lst = (t_arg **)malloc(sizeof(t_arg *))))
 		return (-1);
-	while (ret != ft_strlen(format)) //verifier le strlen pour format = 0
+	*lst = NULL;
+	ret = get_convlst(format, lst);
+	aff_lst(lst);
+	return (ret);
+}
+
+int get_convlst(const char *format, t_arg **lst)
+{	
+	size_t		ret;
+	size_t		size;
+	size_t		res;
+
+	ret = 0;
+	size = ft_strlen(format);
+	while (ret != size) //verifier le strlen pour format = 0
 	{
-		ret = ret + parsing(format + ret, lst);
+		ret +=  process_S(format + ret, lst) + 1;
+		if ((res = check_conv(format + ret, lst)) == -1)
+			return (-1);
+		printf("res:%zu\n", res);
+		ret += res;
 	}
-	va_end(ap);
-	return (0);
+	return (1);
 }
