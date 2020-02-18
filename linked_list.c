@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/17 19:27:54 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:53:33 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,35 @@ void aff_lst(t_arg **lst)
 		ft_putstr_fd(ptr->res, 1);
 		ptr=ptr->next;
 	}
+}
+
+t_arg *init_arg()
+{
+	t_arg *elem;
+
+	if (!(elem = (t_arg *)malloc(sizeof(t_arg))))
+		return (NULL);
+	elem->is_convers = -1;
+	elem->alig = 0;
+	elem->zero = 0;
+	elem->width = 0;
+	elem->prec = 0;
+	elem->type = 0;
+	elem->res = 0;
+	return (elem);
+}
+
+void aff_arg(t_arg *arg)
+{
+	int i = arg->is_convers;
+	int a = arg->alig;
+	int z = arg->zero;
+	int w = arg->width;
+	int p = arg->prec;
+	char t = arg->type;
+	printf("-------------ARG--------------\n");
+	printf("conv:\t%d;\nalig:\t%d;\nzero?:\t%d;\nwidth:\t%d;\nprec:\t%d;\ntype:\t%c;\n", i, a, z, w, p, t);
+	printf("-------------FIN--------------\n");
 }
 
 void add_c(t_arg **lst, t_arg *new)
@@ -65,6 +94,5 @@ t_arg *arg_newc(char c)
 	elem->zero = 0;
 	elem->width = 0;
 	elem->prec = 0;
-	elem->str = NULL;
 	return (elem);
 }
