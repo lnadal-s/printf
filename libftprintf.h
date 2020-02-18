@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:57:44 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 14:14:11 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:04:35 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define LIBFTPRINTF_H
 # include <stdarg.h>
 # include "libft/libft.h"
+
+typedef struct	s_print
+{
+	va_list ap;
+	t_arg **lst;
+}				t_print;
 
 typedef struct	s_arg
 {
@@ -27,6 +33,10 @@ typedef struct	s_arg
 	struct s_arg	*next;
 }				t_arg;
 
+// <--------- TRAITEMENT ARGS --------->
+
+
+// <--------- TRAITEMENT FORMAT --------->
 int				process_S(const char *s, t_arg **lst);
 int				get_convlst(const char *format, t_arg **lst);
 
@@ -36,9 +46,11 @@ void			add_c(t_arg **lst, t_arg *new);
 t_arg			*arg_newc(char c);
 t_arg 			*init_arg();
 void 			aff_arg(t_arg *arg);
-int get_val(const char* format);
+int				ft_printf(const char* format, ...);
+size_t			len_ll(t_arg **lst)
+int				**init_lst(t_arg **lst);
 
-// <--------- CHECK FORMAT --------->
+	// <--------- CHECK FORMAT --------->
 int				check_conv(const char *str, t_arg **lst);
 int 			check_alig(const char *str, t_arg *arg);
 int 			check_zero(const char *str, t_arg *arg);

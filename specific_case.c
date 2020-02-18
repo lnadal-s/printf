@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit_check_conv.c                                  :+:      :+:    :+:   */
+/*   specific_case.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 10:57:21 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 15:14:30 by lnadal-s         ###   ########.fr       */
+/*   Created: 2020/02/18 15:17:05 by lnadal-s          #+#    #+#             */
+/*   Updated: 2020/02/18 15:24:39 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libftprintf.h"
 
-int main()
+int alig_zero(t_arg *arg) //si align et zero sont en flag
 {
-	char *str = "%123sbonjour %%  merce---0123.*p Xet saluuut %-0*.2147483647d %c oui %*d %.x";
-	//char *str = " % ";
-	
-	
-	printf("v:%d\n", get_val(str));
+	if (arg->alig == 1 && arg->zero == 1)
+		return (1);
+	return (0)
 }

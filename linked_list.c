@@ -6,12 +6,30 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 14:55:23 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:13:31 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
+
+size_t len_ll(t_arg **lst)
+{
+	size_t	k;
+	*t_arg	ptr;
+
+	k = 0;
+	if (!lst || !*lst)
+		return (0);
+	ptr = *lst;
+	while (ptr)
+	{
+		ptr = ptr->next;
+		k++;
+	}
+	return (k);
+		
+}
 
 void aff_lst(t_arg **lst)
 {
@@ -110,4 +128,12 @@ t_arg *arg_newc(char c)
 	elem->width = 0;
 	elem->prec = 0;
 	return (elem);
+}
+
+int **init_lst(t_arg **lst)
+{
+	if (!(lst = (t_arg **)malloc(sizeof(t_arg*))))
+		return (0);
+	*lst = NULL;
+	return (1);
 }

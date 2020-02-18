@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:59:03 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 14:59:35 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:01:03 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,21 @@ int process_S(const char *s, t_arg **lst)
 	return (k);
 }
 
-int get_val(const char* format)
+int ft_printf(const char* format, ...)
 {
-	t_arg **lst;
-	int ret;
-
-	if (!(lst = (t_arg **)malloc(sizeof(t_arg *))))
+	t_arg		**lst;
+	t_print		*tp;
+	int			ret;
+	
+	va_start(tp->ap, format);
+	if (!(tp = (t_print *)malloc(sizeof(t_print))))
 		return (-1);
-	*lst = NULL;
-	ret = get_convlst(format, lst);
-	aff_lst(lst);
+	if (!(init_lst(tp->lst)))
+		return (-1);
+	if (get_convlst(format, tp->lst) == -1)
+		return (-1);
+	ret = process(tp);
+	va_end(tp->ap);
 	return (ret);
 }
 
@@ -96,13 +101,15 @@ int get_convlst(const char *format, t_arg **lst)
 	size_t		res;
 
 	ret = 0;
+	if (!format || !lst)
+		return (-1);
 	size = ft_strlen(format);
 	while (ret != size) //verifier le strlen pour format = 0
 	{
 		ret +=  process_S(format + ret, lst) + 1;
 		if ((res = check_conv(format + ret, lst)) == -1)
 			return (-1);
-		printf("res:%zu\n", res);
+		//printf("res:%zu\n", res);
 		ret += res;
 	}
 	return (1);
