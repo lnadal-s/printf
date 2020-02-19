@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit_check_conv.c                                  :+:      :+:    :+:   */
+/*   process_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 10:57:21 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 15:14:30 by lnadal-s         ###   ########.fr       */
+/*   Created: 2020/02/19 12:43:58 by lnadal-s          #+#    #+#             */
+/*   Updated: 2020/02/19 12:52:53 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libftprintf.h"
 
-int main()
+int process_str(t_print *tp, t_arg *arg)
 {
-	char *str = "%123sbonjour %%  merce---0123.*p Xet saluuut %-0*.2147483647d %c oui %*d %.x";
-	//char *str = " % ";
-	
-	
-	printf("v:%d\n", get_val(str));
+	if (align_zero(arg) == -1)
+		return (-1);
+	if (arg->prec != 0 || arg->zero != 0)
 }

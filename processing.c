@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_list.c                                     :+:      :+:    :+:   */
+/*   processing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 15:02:57 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 18:20:12 by lnadal-s         ###   ########.fr       */
+/*   Created: 2020/02/19 09:53:26 by lnadal-s          #+#    #+#             */
+/*   Updated: 2020/02/19 12:56:15 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ int process_and_type(t_print *tp, t_arg *ptr)
 {
 	if (ptr->is_convers < 1)
 		return (ptr->is_convers);
-	else if (ptr->type = "c")
-		return (process_c(tp, arg));
-/*	else if (ptr->type = "s")
-		return ();
-	else if (ptr->type = "p")
+	else if (ptr->type == 'c')
+		return (process_c(tp, ptr));
+	else if (ptr->type == 's')
+		return (process_str(tp, ptr));
+	return (1);
+/*		else if (ptr->type = "p")
 		return();
 	else if (ptr->type = "d")
 		return ();
@@ -49,4 +50,5 @@ int process(t_print *tp)
 			return (-1);
 		ptr = ptr->next;
 	}
+	return (1);
 }

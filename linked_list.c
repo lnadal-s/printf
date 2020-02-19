@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/18 17:13:31 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/19 12:30:18 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 size_t len_ll(t_arg **lst)
 {
 	size_t	k;
-	*t_arg	ptr;
+	t_arg	*ptr;
 
 	k = 0;
 	if (!lst || !*lst)
@@ -28,18 +28,17 @@ size_t len_ll(t_arg **lst)
 		k++;
 	}
 	return (k);
-		
+
 }
 
 void aff_lst(t_arg **lst)
 {
 	t_arg *ptr;
-//	int k = 0; 
+	//	int k = 0; 
 
 	if (lst == NULL)
 		return ;
 	ptr = *lst;
-	printf("on va print\n");
 	while (ptr)
 	{
 		//printf("---ARGUEMENT %d----\n", k++);
@@ -51,9 +50,9 @@ void aff_lst(t_arg **lst)
 		else
 		{
 			printf("\n");
-		//	printf("je print 2\n");
+			//	printf("je print 2\n");
 			aff_arg(ptr);
-			
+
 		}
 		ptr=ptr->next;
 	}
@@ -72,7 +71,7 @@ t_arg *init_arg()
 	elem->prec = 0;
 	elem->type = 0;
 	elem->res = 0;
-	elem->next = 0;
+	elem->next = NULL;
 	return (elem);
 }
 
@@ -92,21 +91,22 @@ void aff_arg(t_arg *arg)
 void add_c(t_arg **lst, t_arg *new)
 {
 	t_arg   *ptr;
-	
-	if (!(lst))
+
+	if (!(lst) || !new)
 		return ;
-	else if (!(*lst))
+	 if (!(*lst))
 		*lst = new;
 	else
 	{
 		ptr = *lst;
 		if (ptr->next)
 			while (ptr->next)
+			{
 				ptr = ptr->next;
+			}
 		ptr->next = new;
 		new->next = 0;
 	}
-
 }
 
 t_arg *arg_newc(char c)
@@ -114,6 +114,8 @@ t_arg *arg_newc(char c)
 	t_arg   *elem;
 	char    *dst;
 
+	if (c == 0)
+		return (NULL);
 	if (!(elem = (t_arg *)malloc(sizeof(t_arg))))
 		return (NULL);
 	if (!(dst = (char *)malloc(sizeof(char) * 2)))
@@ -128,12 +130,4 @@ t_arg *arg_newc(char c)
 	elem->width = 0;
 	elem->prec = 0;
 	return (elem);
-}
-
-int **init_lst(t_arg **lst)
-{
-	if (!(lst = (t_arg **)malloc(sizeof(t_arg*))))
-		return (0);
-	*lst = NULL;
-	return (1);
 }

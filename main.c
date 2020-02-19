@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 17:56:04 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:12:16 by lnadal-s         ###   ########.fr       */
+/*   Created: 2020/02/19 09:55:54 by lnadal-s          #+#    #+#             */
+/*   Updated: 2020/02/19 12:56:17 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char *alloc_char(char c, int size)
+int main()
 {
-	char	*dst;
-	int		k;
-
-	k = 0;
-	if (!(dst = (char *)malloc(sizeof(char) * (size + 1))))
-		return (0);
-	while (k < size)
-	{
-		dst[k] = c;
-		k++;
-	}
-	dst[k] = 0;
-	return (dst);
+	//ft_printf("%c\n", 13,'o');
+    printf("%123.2s",  "bonjour" );
+   // ft_printf("%8\n", "bonjour");
 }
