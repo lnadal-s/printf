@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printing.c                                         :+:      :+:    :+:   */
+/*   testprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 11:29:32 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 15:48:36 by lnadal-s         ###   ########.fr       */
+/*   Created: 2020/02/19 17:48:02 by lnadal-s          #+#    #+#             */
+/*   Updated: 2020/02/19 18:20:29 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int printing(t_arg **lst)
+int main()
 {
-	t_arg *ptr;
-
-	if (!lst || !*lst)
-		return (0);
-	else
-	{
-		ptr = *lst;
-		while (ptr)
-		{
-			
-		//	printf("%s\n", ptr->res);
-			ft_putstr_fd(ptr->res, 1);
-			ptr = ptr->next;
-		}
-	}
-	return (1);
+	int v = printf("%0*.*d", 20,314);
+	printf("v:%d\n", v);
 }

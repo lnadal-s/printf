@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:35:06 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:41:18 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:15:47 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int ft_printf(const char* format, ...)
 	tp->lst = lst;
 	if (acquisition(format, lst) == -1)
 		return (clear_sp(tp));
-	//printf("before\n");
+//	printf("before\n");
 	ret = process(tp);
 	//printf("after process\n");
 	//printf("ret = %d\n", ret);
+	aff_lst(tp->lst);
 	if (ret == -1)
 		return (clear_sp(tp));
 	va_end(tp->ap);

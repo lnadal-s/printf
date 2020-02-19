@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:02:15 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:56:12 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:06:07 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int get_res_c(t_print *tp, t_arg *arg)
 	char *dst;
 	char *c;
 
-	check_neg_width(arg);
 	if (!(w = alloc_char(' ', arg->width - 1)))
 		return (0);
 	if (!(c = alloc_char((char)va_arg(tp->ap, int), 1)))
@@ -37,6 +36,7 @@ int get_res_c(t_print *tp, t_arg *arg)
 	return (1);
 }
 
+//process char -> mettre le get-start tout de suite apres alig zero
 int process_c(t_print *tp, t_arg *arg)
 {
 	if (alig_zero(arg) == 1)
@@ -45,7 +45,8 @@ int process_c(t_print *tp, t_arg *arg)
 		return (-1);
 	if (arg->width == -1)
 		arg->width = va_arg(tp->ap, int);
-	printf("w:%d\n", arg->width);
+	//printf("w:%d\n", arg->width);
+	check_neg_width(arg);
 	if (!(get_res_c(tp, arg)))
 		return (-1);
 	return (1);

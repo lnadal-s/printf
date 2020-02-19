@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:50:14 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:43:17 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/19 15:48:31 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int check_prec(const char *str, t_arg *arg)
 		else
 		{
 			arg->prec = ft_atoi(str + k);
+			arg->is_prec = 1;
 			while (str[k] && ft_isdigit(str[k]))
 				k++;
 		}

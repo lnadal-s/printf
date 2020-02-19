@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:57:44 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:49:38 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:20:31 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_arg
 	int				zero;
 	int				width; // width > 0 c'est la taille sinon c'est *a
 	int				prec; // prec > 0 c'est si -1 c est * 
+	int				is_prec;
 	char			type; // cspdiuxX
 	char			*res;
 	int				len;
@@ -65,9 +66,12 @@ int				is_flag(char c);
 
 // <--------- UTILS --------->
 char			*alloc_char(char c, int size);
-void			check_neg_width(t_arg *arg);
-// <--------- ALIG ZERO --------->
+int				get_star(t_print *tp, t_arg *arg);
+
+// <--------- SPECIFIC CASE --------->
 int				alig_zero(t_arg *arg);
+void			check_neg_width(t_arg *arg);
+
 // <--------- CLEAR --------->
 int				clear_sp(t_print *tp);
 void	clear_s_arg(t_arg **lst);

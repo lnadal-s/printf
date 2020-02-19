@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:30:18 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:53:24 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_arg *init_arg()
 	elem->zero = 0;
 	elem->width = 0;
 	elem->prec = 0;
+	elem->is_prec = 0;
 	elem->type = 0;
 	elem->res = 0;
 	elem->next = NULL;
@@ -83,8 +84,10 @@ void aff_arg(t_arg *arg)
 	int w = arg->width;
 	int p = arg->prec;
 	char t = arg->type;
+	char *s = arg->res;
+	int ip = arg->is_prec;
 	printf("-------------ARG--------------\n");
-	printf("conv:\t%d;\nalig:\t%d;\nzero?:\t%d;\nwidth:\t%d;\nprec:\t%d;\ntype:\t%c;\n", i, a, z, w, p, t);
+	printf("conv:\t%d;\nalig:\t%d;\nzero?:\t%d;\nwidth:\t%d;\nprec:\t%d;\nis_prec:\t%d;\ntype:\t%c;\nres:\t%s;\n", i, a, z, w, p, ip, t, s);
 	printf("-------------FIN--------------\n");
 }
 
