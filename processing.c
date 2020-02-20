@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:53:26 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 18:20:35 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 09:01:13 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ int process_and_type(t_print *tp, t_arg *ptr)
 		return (process_c(tp, ptr));
 	else if (ptr->type == 's')
 		return (process_str(tp, ptr));
-/*		else if (ptr->type = "p")
-		return();
-	*/else if (ptr->type = "d")
-		return (process_dec(tp, ptr));
+	else if (ptr->type = "d")
+		return(process_dec(tp, ptr));
 	return (1);
-	else if (ptr->type = "i")
+	/*	else if (ptr->type = "i")
+		return ();
+	return (1);
+	else if (ptr->type = "p")
 		return ();
 	else if (ptr->type = "o")
 		return ();
