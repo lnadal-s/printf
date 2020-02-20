@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 09:46:51 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 14:36:52 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:09:49 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int get_star(t_print *tp, t_arg *arg)
 {
 	int res;
-	
+
 	res = 0;
 	if (arg->width == -1)
 		arg->width = (int)va_arg(tp->ap, int);
@@ -40,21 +40,30 @@ int get_star(t_print *tp, t_arg *arg)
 	return (res);
 }
 
-char *put_neg(t_arg *arg, char *dst, int indice)
+char *get_spec(t_arg *arg)
+{
+	 if (arg->is_prec == 1)
+		 return (ft_strdup(""));
+	 return (ft_strdup("0"));
+}
+
+char *put_neg(t_arg *arg, char *dst, int indice, int size)
 {
 	char *str;
 
 	if (arg->neg == 0)
 		return (dst);
-	if (indice == 0)
+	if (arg->width > size && indice == 1)
+	{
+		dst[0] = '-';
+		return (dst);
+	}
+	else
 	{
 		str = ft_strjoin("-", dst);
 		free(dst);
 		return (str);
 	}
-	if (indice == 1)
-		dst[0] = '-';
-	return (dst);
 }
 
 char *alloc_char(char c, int size)

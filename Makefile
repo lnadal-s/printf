@@ -35,14 +35,14 @@ FLAGS = -Wall -Wextra -Werror
 %.o: %.c libftprintf.h
 	${GCC} -I ${HEADER} ${FLAGS} -Ilibft -c $< -o ${<:.c=.o}
 
+$(NAME):  LIB $(OBJS)
+		ar -rcs ${NAME} ${OBJS} 
+		ranlib ${NAME}
 
 LIB:
 		make -C ${LIBFT_DIR} re	
 		cp ./libft/libft.a ${NAME}
 
-$(NAME):  LIB ${OBJS}
-		ar -rcs ${NAME} ${OBJS}
-		ranlib ${NAME}
 
 all:	${NAME}	
 		

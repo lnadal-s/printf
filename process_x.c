@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 11:49:53 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 15:53:07 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:14:10 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int process_x(t_print *tp, t_arg *arg, int indice)
 	get_star(tp, arg);
 	if (arg->is_prec == 1)
 		arg->zero = 0;
-	u = va_arg(tp->ap, unsigned int);
-	nbr = ft_itoa(u);
+	if(!(u = va_arg(tp->ap, unsigned int)))
+		nbr = get_spec(arg);
+	else
+		nbr = ft_itoa(u);
 	tmp = nbr;
 	nbr = ft_convert_base(nbr, "0123456789", base);
 	free(tmp);

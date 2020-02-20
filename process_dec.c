@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:45:45 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 16:05:56 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:14:08 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,17 @@ char *get_alig(t_arg *arg, char *dst)
 int get_res_dec(char *nbr, t_arg *arg)
 {
 	char *dst;
-	
+	size_t size;
+
 	if (!(dst = get_prec(arg, nbr)))
 		return (0);
+	size = ft_strlen(dst);
 	if (arg->zero == 0)
-		dst = put_neg(arg, dst, 0);
+		dst = put_neg(arg, dst, 0, (int)size);
 	if (!(dst = get_alig(arg, dst)))
 		return (0);
 	if (arg->zero == 1)
-		dst = put_neg(arg, dst, 1);
+		dst = put_neg(arg, dst, 1 ,(int)size);
 	arg->res = dst;
 	arg->len = ft_strlen(dst);
 	return (1);
@@ -85,17 +87,19 @@ char *get_neg(int n, t_arg *arg)
 	unsigned int nb;
 	char *nbr;
 
-	if (n >= 0)
+	if (n > 0)
 	{
 		nbr = ft_itoa(n);
 		arg->neg = 0;
 	}
-	else
+	else if (n < 0)
 	{
 		nb = -n;
 		nbr = ft_itoa(nb);
 		arg->neg = 1;
 	}
+	else 
+		nbr = get_spec(arg);
 	return (nbr);
 }
 

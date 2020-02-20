@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 13:59:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 15:53:52 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:14:09 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int process_u(t_print *tp, t_arg *arg)
 	if (alig_zero(arg) == 1)
 		return (-1);
 	get_star(tp, arg);
-	n = va_arg(tp->ap, unsigned int);
-	nbr = ft_itoa(n);
+	if (!(n = va_arg(tp->ap, unsigned int)))
+		nbr = get_spec(arg);// LEAKS ICI
+	else
+		nbr = ft_itoa(n);
 	if (arg->is_prec == 1)
 		arg->zero = 0;
 	if (!(get_res_dec(nbr, arg)))

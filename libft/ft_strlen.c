@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 16:03:24 by lnadal-s          #+#    #+#             */
-/*   Updated: 2019/10/22 16:05:03 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 18:47:58 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t		ft_strlen(const char *s)
 	size_t k;
 
 	k = 0;
+	if (!s)
+		return (0);
 	while (s[k])
 		k++;
 	return (k);

@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:57:44 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 17:27:02 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:14:15 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_print
 	t_arg **lst;
 }				t_print;
 
+int ft_printf(const char* format, ...);
 // <--------- TRAITEMENT ARGS --------->
 int process(t_print *tp);
 int process_c(t_print *tp, t_arg *arg);
@@ -77,7 +78,8 @@ int				is_flag(char c);
 // <--------- UTILS --------->
 char			*alloc_char(char c, int size);
 int				get_star(t_print *tp, t_arg *arg);
-char			*put_neg(t_arg *arg, char *dst, int indice);
+char			*put_neg(t_arg *arg, char *dst, int indice, int size);
+char *get_spec(t_arg *arg);
 // <--------- SPECIFIC CASE --------->
 int				alig_zero(t_arg *arg);
 void			check_neg_width(t_arg *arg);
