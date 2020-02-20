@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:57:44 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 09:36:58 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:27:21 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_print
 int process(t_print *tp);
 int process_c(t_print *tp, t_arg *arg);
 int process_str(t_print *tp, t_arg *ptr);
+int process_dec(t_print *tp, t_arg *arg);
 
 // <--------- TRAITEMENT FORMAT --------->
 int				acquisition(const char *format, t_arg **lst);

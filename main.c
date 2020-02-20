@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:55:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 17:47:57 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:45:19 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int main()
 {
 	int v;
 	int d;
-	char *to_print = "bonjour";
+	
 	printf("\n---------MA FONCTION---------\n");
-	d = ft_printf("%10.s",to_print);
+	d = ft_printf("%0*.*d", 8, 0,12);
+	
 	printf("\n---------VRAI FONCTION---------\n");
-	v = printf("%.s", to_print );
+	v = printf("%0*.*d", 8, 0, 12);
+	
 	printf("\n--------- RESULTATS ---------\n");
 	printf("\nvft:%d vprintf: %d\n", d, v);
 	
