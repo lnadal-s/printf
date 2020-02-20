@@ -6,13 +6,13 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:05:26 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 17:37:37 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:13:23 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		position(char c, char *base)
+static int			position(char c, char *base)
 {
 	int k;
 
@@ -26,7 +26,7 @@ static int		position(char c, char *base)
 	return (-1);
 }
 
-static int		ft_checkbase(char *base)
+static int			ft_checkbase(char *base)
 {
 	int k;
 	int j;
@@ -53,10 +53,10 @@ static int		ft_checkbase(char *base)
 	return (1);
 }
 
-static int		ft_atoib(char *str, char *base_from)
+static long int		ft_atoib(char *str, char *base_from)
 {
 	int					k;
-	unsigned int		res;
+	long int			res;
 	int					s;
 
 	k = 0;
@@ -81,11 +81,11 @@ static int		ft_atoib(char *str, char *base_from)
 	return (res * s);
 }
 
-char			*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char				*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int		k;
-	int		nb;
-	char	*tab;
+	int					k;
+	unsigned long int	nb;
+	char				*tab;
 
 	k = 0;
 	if (base_from == 0 || base_to == 0)

@@ -6,13 +6,13 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 14:09:24 by lnadal-s          #+#    #+#             */
-/*   Updated: 2019/11/26 17:15:21 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:10:57 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		len_int(long n)
+static int		len_int(unsigned long int n)
 {
 	int len;
 
@@ -30,7 +30,7 @@ static int		len_int(long n)
 	return (len);
 }
 
-static void		to_integer(char *integer, long m, int size)
+static void		to_integer(char *integer, unsigned long int m, int size)
 {
 	if (m == 0)
 		integer[0] = '0';
@@ -42,11 +42,11 @@ static void		to_integer(char *integer, long m, int size)
 	}
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(unsigned long int n)
 {
-	long			m;
-	int				size;
-	char			*integer;
+	unsigned long int	m;
+	int					size;
+	char				*integer;
 
 	m = n;
 	size = len_int(m);

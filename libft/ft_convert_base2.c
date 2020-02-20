@@ -6,13 +6,13 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:00:03 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 17:35:46 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:18:37 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_tailletab(unsigned int nbr, char *base)
+int		ft_tailletab(unsigned long int nbr, char *base)
 {
 	int		k;
 	int		size;
@@ -29,34 +29,34 @@ static int		ft_tailletab(unsigned int nbr, char *base)
 	return (k);
 }
 
-static void		convertbaseto(char *tab, char *base, int nb, int sizetab)
+void	convertbaseto(char *tab, char *base, unsigned long int nb, int s)
 {
 	int					reste;
-	unsigned int		nbr;
-	unsigned int		t;
+	unsigned long int	nbr;
+	unsigned long int	t;
 
 	t = ft_strlen(base);
 	if (nb < 0)
 		nbr = -nb;
 	else
 		nbr = nb;
-	tab[sizetab] = 0;
-	while (0 < sizetab)
+	tab[s] = 0;
+	while (0 < s)
 	{
 		reste = nbr % t;
 		nbr = nbr / t;
-		tab[sizetab - 1] = base[reste];
-		sizetab--;
+		tab[s - 1] = base[reste];
+		s--;
 	}
 	if (nb < 0)
 		tab[0] = '-';
 }
 
-char			*ft_dectobase(int nb, char *base)
+char	*ft_dectobase(unsigned long int nb, char *base)
 {
 	int					sizetab;
 	char				*tab;
-	unsigned int		n;
+	long int			n;
 
 	if (nb < 0)
 	{

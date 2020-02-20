@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:57:44 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 11:27:21 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:27:02 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_arg
 	int				prec; // prec > 0 c'est si -1 c est * 
 	int				is_prec;
 	char			type; // cspdiuxX
+	int				neg;
 	char			*res;
 	int				len;
 	struct s_arg	*next;
@@ -40,6 +41,14 @@ int process(t_print *tp);
 int process_c(t_print *tp, t_arg *arg);
 int process_str(t_print *tp, t_arg *ptr);
 int process_dec(t_print *tp, t_arg *arg);
+char *get_neg(int n, t_arg *arg);
+int get_res_dec(char *nbr, t_arg *arg);
+char *get_alig(t_arg *arg, char *dst);
+char *get_prec(t_arg *arg, char *nbr);
+int process_x(t_print *tp, t_arg *arg, int indice);
+int process_u(t_print *tp, t_arg *arg);
+int process_u(t_print *tp, t_arg *arg);
+int process_p(t_print *tp, t_arg *arg);
 
 // <--------- TRAITEMENT FORMAT --------->
 int				acquisition(const char *format, t_arg **lst);
@@ -68,7 +77,7 @@ int				is_flag(char c);
 // <--------- UTILS --------->
 char			*alloc_char(char c, int size);
 int				get_star(t_print *tp, t_arg *arg);
-
+char			*put_neg(t_arg *arg, char *dst, int indice);
 // <--------- SPECIFIC CASE --------->
 int				alig_zero(t_arg *arg);
 void			check_neg_width(t_arg *arg);

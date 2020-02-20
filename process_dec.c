@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:45:45 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 11:47:01 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:05:56 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char *get_alig(t_arg *arg, char *dst)
 		return (dst);
 	size = ft_strlen(dst);
 	size = size > arg->width ? 0 : arg->width - size;
-	if (arg->alig == 1 || arg->is_prec == 1)
+	if (arg->alig == 1 || arg->is_prec == 1 || arg->width > 0)
 		sp = ' ';
 	if (arg->is_prec == 0 && arg->zero == 1)
 		sp = '0';
@@ -69,21 +69,47 @@ int get_res_dec(char *nbr, t_arg *arg)
 	
 	if (!(dst = get_prec(arg, nbr)))
 		return (0);
+	if (arg->zero == 0)
+		dst = put_neg(arg, dst, 0);
 	if (!(dst = get_alig(arg, dst)))
 		return (0);
+	if (arg->zero == 1)
+		dst = put_neg(arg, dst, 1);
 	arg->res = dst;
 	arg->len = ft_strlen(dst);
 	return (1);
 }
 
+char *get_neg(int n, t_arg *arg)
+{
+	unsigned int nb;
+	char *nbr;
+
+	if (n >= 0)
+	{
+		nbr = ft_itoa(n);
+		arg->neg = 0;
+	}
+	else
+	{
+		nb = -n;
+		nbr = ft_itoa(nb);
+		arg->neg = 1;
+	}
+	return (nbr);
+}
+
 int process_dec(t_print *tp, t_arg *arg)
 {
 	char *nbr;
+	long int n;
 
 	if (alig_zero(arg) == 1)
 		return (-1);
 	get_star(tp, arg);
-	nbr = ft_itoa(va_arg(tp->ap, int)); //MALLOC ICI
+	n = va_arg(tp->ap, int);
+	if (!(nbr = get_neg(n, arg)))
+		return (-1); 
 	if (arg->is_prec == 1)
 		arg->zero = 0;
 	if (!(get_res_dec(nbr, arg)))

@@ -6,10 +6,10 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:26:35 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 15:02:01 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:57:22 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "libftprintf.h"
 
 int is_flag(char c)

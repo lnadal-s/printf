@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:35:06 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 17:15:47 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:55:44 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int ft_printf(const char* format, ...)
 	ret = process(tp);
 	//printf("after process\n");
 	//printf("ret = %d\n", ret);
-	aff_lst(tp->lst);
+	//aff_lst(tp->lst);
 	if (ret == -1)
 		return (clear_sp(tp));
 	va_end(tp->ap);
-	printing(lst);
+	ret = printing(lst);
 	clear_sp(tp);
 	return (ret);
 }

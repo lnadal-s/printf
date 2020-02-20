@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:02:15 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 18:06:07 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:52:43 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int get_res_c(t_print *tp, t_arg *arg)
 	free(c);
 	free(w);
 	arg->res = dst;
+	arg->len = ft_strlen(dst);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:00:27 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 17:52:41 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:13:47 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ struct		s_list
 	struct s_list	*next;
 };
 char		*ft_convert_base(char *nbr, char *base_from, char *base_to);
-char		*ft_dectobase(int nb, char *base);
+char		*ft_dectobase(unsigned long int nb, char *base);
 char		*ft_strdup(const char *s);
 int			ft_atoi(const char *src);
 typedef struct s_list	t_list;
@@ -40,7 +40,7 @@ int			ft_isalpha(int c);
 int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
-char		*ft_itoa(int n);
+char		*ft_itoa(unsigned long int n);
 void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
