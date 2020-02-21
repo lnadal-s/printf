@@ -6,16 +6,16 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 13:59:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 19:14:09 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:18:09 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int process_u(t_print *tp, t_arg *arg)
+int	process_u(t_print *tp, t_arg *arg)
 {
-	char *nbr;
-	unsigned int n;
+	char			*nbr;
+	unsigned int	n;
 
 	if (alig_zero(arg) == 1)
 		return (-1);

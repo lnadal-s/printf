@@ -6,13 +6,13 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:53:26 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 15:51:16 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:27:18 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int process_and_type(t_print *tp, t_arg *ptr)
+int	process_and_type(t_print *tp, t_arg *ptr)
 {
 	if (ptr->is_convers < 1)
 		return (ptr->is_convers);
@@ -21,7 +21,7 @@ int process_and_type(t_print *tp, t_arg *ptr)
 	else if (ptr->type == 's')
 		return (process_str(tp, ptr));
 	else if (ptr->type == 'd' || ptr->type == 'i')
-		return(process_dec(tp, ptr));
+		return (process_dec(tp, ptr));
 	else if (ptr->type == 'x')
 		return (process_x(tp, ptr, 1));
 	else if (ptr->type == 'X')
@@ -33,7 +33,7 @@ int process_and_type(t_print *tp, t_arg *ptr)
 	return (1);
 }
 
-int process(t_print *tp)
+int	process(t_print *tp)
 {
 	t_arg *ptr;
 

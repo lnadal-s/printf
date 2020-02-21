@@ -6,14 +6,13 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:54 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 15:55:05 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:11:24 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-size_t len_ll(t_arg **lst)
+size_t	len_ll(t_arg **lst)
 {
 	size_t	k;
 	t_arg	*ptr;
@@ -28,37 +27,9 @@ size_t len_ll(t_arg **lst)
 		k++;
 	}
 	return (k);
-
 }
 
-void aff_lst(t_arg **lst)
-{
-	t_arg *ptr;
-	//	int k = 0; 
-
-	if (lst == NULL)
-		return ;
-	ptr = *lst;
-	while (ptr)
-	{
-		//printf("---ARGUEMENT %d----\n", k++);
-		if (ptr->is_convers == 0)
-		{
-			//ft_putstr_fd(ptr->res, 1);
-			printf("%s", ptr->res);
-		}
-		else
-		{
-			printf("\n");
-			//	printf("je print 2\n");
-			aff_arg(ptr);
-
-		}
-		ptr=ptr->next;
-	}
-}
-
-t_arg *init_arg()
+t_arg	*init_arg(void)
 {
 	t_arg *elem;
 
@@ -77,29 +48,13 @@ t_arg *init_arg()
 	return (elem);
 }
 
-void aff_arg(t_arg *arg)
+void	add_c(t_arg **lst, t_arg *new)
 {
-	int i = arg->is_convers;
-	int a = arg->alig;
-	int z = arg->zero;
-	int w = arg->width;
-	int p = arg->prec;
-	char t = arg->type;
-	char *s = arg->res;
-	int ip = arg->is_prec;
-	int isng = arg->neg;
-	printf("-------------ARG--------------\n");
-	printf("is_neg:\t%d;\nconv:\t%d;\nalig:\t%d;\nzero?:\t%d;\nwidth:\t%d;\nprec:\t%d;\nis_prec:\t%d;\ntype:\t%c;\nres:\t%s;\n",isng, i, a, z, w, p, ip, t, s);
-	printf("-------------FIN--------------\n");
-}
-
-void add_c(t_arg **lst, t_arg *new)
-{
-	t_arg   *ptr;
+	t_arg *ptr;
 
 	if (!(lst) || !new)
 		return ;
-	 if (!(*lst))
+	if (!(*lst))
 		*lst = new;
 	else
 	{
@@ -114,10 +69,10 @@ void add_c(t_arg **lst, t_arg *new)
 	}
 }
 
-t_arg *arg_newc(char c)
+t_arg	*arg_newc(char c)
 {
-	t_arg   *elem;
-	char    *dst;
+	t_arg	*elem;
+	char	*dst;
 
 	if (c == 0)
 		return (NULL);

@@ -6,13 +6,13 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 09:46:51 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 19:09:49 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:29:29 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int get_star(t_print *tp, t_arg *arg)
+int		get_star(t_print *tp, t_arg *arg)
 {
 	int res;
 
@@ -21,7 +21,7 @@ int get_star(t_print *tp, t_arg *arg)
 		arg->width = (int)va_arg(tp->ap, int);
 	if (arg->width < 0)
 	{
-		arg->width = - arg->width;
+		arg->width = -arg->width;
 		arg->alig = 1;
 		arg->zero = 0;
 		res = 1;
@@ -33,21 +33,21 @@ int get_star(t_print *tp, t_arg *arg)
 	}
 	if (arg->prec < 0)
 	{
-		arg->prec = - arg->prec;
+		arg->prec = -arg->prec;
 		arg->is_prec = 0;
 		res = -1;
 	}
 	return (res);
 }
 
-char *get_spec(t_arg *arg)
+char	*get_spec(t_arg *arg)
 {
-	 if (arg->is_prec == 1)
-		 return (ft_strdup(""));
-	 return (ft_strdup("0"));
+	if (arg->is_prec == 1)
+		return (ft_strdup(""));
+	return (ft_strdup("0"));
 }
 
-char *put_neg(t_arg *arg, char *dst, int indice, int size)
+char	*put_neg(t_arg *arg, char *dst, int indice, int size)
 {
 	char *str;
 
@@ -66,7 +66,7 @@ char *put_neg(t_arg *arg, char *dst, int indice, int size)
 	}
 }
 
-char *alloc_char(char c, int size)
+char	*alloc_char(char c, int size)
 {
 	char	*dst;
 	int		k;

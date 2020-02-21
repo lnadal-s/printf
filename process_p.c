@@ -6,15 +6,15 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 14:06:09 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/20 17:25:40 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:16:28 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int get_addr(t_arg *arg, char *adr)
+int		get_addr(t_arg *arg, char *adr)
 {
-	char *dst;
+	char	*dst;
 
 	if (!(dst = ft_strjoin("0x", adr)))
 		return (0);
@@ -24,14 +24,13 @@ int get_addr(t_arg *arg, char *adr)
 	arg->res = dst;
 	arg->len = ft_strlen(dst);
 	return (1);
-
 }
 
-int process_p(t_print *tp, t_arg *arg)
+int		process_p(t_print *tp, t_arg *arg)
 {
-	unsigned long adr;
-	char *nbr;
-	char *tmp;
+	unsigned long	adr;
+	char			*nbr;
+	char			*tmp;
 
 	if (arg->zero == 1 || arg->is_prec == 1)
 		return (-1);

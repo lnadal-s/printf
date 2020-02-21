@@ -6,38 +6,29 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:50:14 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 15:48:31 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:04:32 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int check_alig(const char *str, t_arg *arg)
+int		check_alig_zero(const char *str, t_arg *arg)
 {
 	int k;
 
 	k = 0;
-	while (str[k] && str[k] == '-')
+	while (str[k] && ((str[k] == '0') || (str[k] == '-')))
+	{
+		if (str[k] == '-')
+			arg->alig = 1;
+		if (str[k] == '0')
+			arg->zero = 1;
 		k++;
-	if (k != 0)
-		arg->alig = 1;
+	}
 	return (k);
 }
 
-int check_zero(const char *str, t_arg *arg)
-{
-	int k;
-
-	k = 0;
-
-	while (str[k] && str[k] == '0')
-		k++;
-	if (k != 0)
-		arg->zero = 1;
-	return (k);
-}
-
-int check_width(const char *str, t_arg *arg)
+int		check_width(const char *str, t_arg *arg)
 {
 	int k;
 
@@ -49,21 +40,21 @@ int check_width(const char *str, t_arg *arg)
 	}
 	else
 	{
-		arg->width = ft_atoi(str + k); //attention a cet atoi il ne doit pas y avoir d' espace ni ce + ni de -
+		arg->width = ft_atoi(str + k);
 		while (str[k] && ft_isdigit(str[k]))
 			k++;
 	}
 	return (k);
 }
 
-int check_prec(const char *str, t_arg *arg)
+int		check_prec(const char *str, t_arg *arg)
 {
 	int k;
 
 	k = 1;
 	if (str[0] != '.')
 		return (0);
-	else 
+	else
 	{
 		if (str[k] && str[k] == '*')
 		{
@@ -81,7 +72,7 @@ int check_prec(const char *str, t_arg *arg)
 	return (k);
 }
 
-int check_flag(const char c, t_arg *arg)
+int		check_flag(const char c, t_arg *arg)
 {
 	if (is_flag(c))
 	{

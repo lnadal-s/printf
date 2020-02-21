@@ -6,18 +6,18 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:13:38 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/19 12:34:56 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:05:13 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void del_one(t_arg *arg)
+void	del_one(t_arg *arg)
 {
 	if (arg->is_convers == 0)
 	{
-			free(arg->res);
-			arg->res = 0;
+		free(arg->res);
+		arg->res = 0;
 	}
 	else if (arg->is_convers == 1)
 	{
@@ -31,7 +31,7 @@ void del_one(t_arg *arg)
 	arg = 0;
 }
 
-void clear_s_arg(t_arg **lst)
+void	clear_s_arg(t_arg **lst)
 {
 	t_arg *ptr;
 	t_arg *tmp;
@@ -52,7 +52,7 @@ void clear_s_arg(t_arg **lst)
 	lst = 0;
 }
 
-int clear_sp(t_print *tp)
+int		clear_sp(t_print *tp)
 {
 	clear_s_arg(tp->lst);
 	free(tp);
