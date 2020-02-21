@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:35:06 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/21 12:07:39 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:16:40 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	ft_printf(const char *format, ...)
 		return (clear_sp(tp));
 	va_end(tp->ap);
 	ret = printing(lst);
-	clear_sp(tp);
+	//clear_sp(tp);
 	return (ret);
 }

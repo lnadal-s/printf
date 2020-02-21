@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:26:35 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/21 12:04:22 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:55:41 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		is_flag(char c)
 	int		k;
 
 	k = 0;
-	flags = "cspdiuxX";
+	flags = "cspdiuxX%";
 	while (flags[k])
 	{
 		if (flags[k] == c)

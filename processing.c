@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 09:53:26 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/21 12:27:18 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:58:12 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	process_and_type(t_print *tp, t_arg *ptr)
 {
 	if (ptr->is_convers < 1)
 		return (ptr->is_convers);
-	else if (ptr->type == 'c')
+	else if (ptr->type == 'c' || ptr->type == '%')
 		return (process_c(tp, ptr));
 	else if (ptr->type == 's')
 		return (process_str(tp, ptr));

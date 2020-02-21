@@ -6,7 +6,7 @@
 /*   By: lnadal-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:02:15 by lnadal-s          #+#    #+#             */
-/*   Updated: 2020/02/21 12:13:10 by lnadal-s         ###   ########.fr       */
+/*   Updated: 2020/02/21 13:58:47 by lnadal-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int		get_res_c(t_print *tp, t_arg *arg)
 
 	if (!(w = alloc_char(' ', arg->width - 1)))
 		return (0);
-	c = (char)va_arg(tp->ap, int);
+	if (arg->type == '%')
+		c = '%';
+	else
+		c = (char)va_arg(tp->ap, int);
 	dst = add_char(c, w, arg->alig);
 	arg->res = dst;
 	arg->len = ft_strlen(dst);
@@ -57,10 +60,10 @@ int		get_res_c(t_print *tp, t_arg *arg)
 
 int		process_c(t_print *tp, t_arg *arg)
 {
-	if (alig_zero(arg) == 1)
-		return (-1);
-	if (arg->prec != 0 || arg->zero != 0)
-		return (-1);
+//	if (alig_zero(arg) == 1)
+//		return (-1);
+//	if (arg->zero != 0)
+//		return (-1);
 	if (arg->width == -1)
 		arg->width = va_arg(tp->ap, int);
 	check_neg_width(arg);
