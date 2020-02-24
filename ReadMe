@@ -2,7 +2,7 @@ In order to succeed the 42 project "ft_printf" I recoded the printf fonction fro
 
 Only defined behavior are handled plus "-0*." flags and c, s, p, d, i, u, X, x conversions.
 
-My project is designed to fit "norme 42" that's why the number of lines per fonction is limited by 25.
+My project is designed to fit "norme 42" that is why the number of lines per fonction is limited by 25.
 
 - git clone https://github.com/lnadal-s/printf.git;
 
